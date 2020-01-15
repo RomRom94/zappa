@@ -1,0 +1,8 @@
+<ul *ngIf="bets.length > 0">
+  <li *ngFor="let bet of bets">
+    {{ bet.title }}
+    {{ bet.content }}
+  </li>
+</ul>
+
+<p *ngIf="bets.length <= 0">No bets render yet</p>
