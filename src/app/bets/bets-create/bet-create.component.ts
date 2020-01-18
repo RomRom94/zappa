@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 
+import { Bet } from '../bet.model';
+
 @Component({
   selector: 'app-bet-create',
   templateUrl: './bet-create.component.html'
@@ -7,10 +9,10 @@ import { Component, EventEmitter, Output } from '@angular/core';
 export class BetCreateComponent {
   betTitle = '';
   betContent = '';
-  @Output() betCreated = new EventEmitter();
+  @Output() betCreated = new EventEmitter<Bet>();
 
   onAddBet() {
-    const bet = {
+    const bet: Bet = {
       title: this.betTitle,
       content: this.betContent
     };
