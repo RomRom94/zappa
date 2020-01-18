@@ -1,4 +1,13 @@
 <h2>Créer un pari</h2>
-<input type="text" [(ngModel)]="betTitle">
-<textarea rows="10" [(ngModel)]="betContent"></textarea>
-<button (click)="onAddBet()">Valider mon pari</button>
+<form (submit)="onAddBet(betForm)" #betForm="ngForm">
+  <input
+   type="text"
+   name="title"
+   ngModel
+   required
+   #title="ngModel">
+  <span *ngIf="title.invalid">Veuillez entrer le titre du pari.</span>
+  <textarea rows="10" name="content" ngModel required #content="ngModel"></textarea>
+  <span *ngIf="content.invalid">Veuillez entrer le contenu du pari.</span>
+  <button type="submit">Valider mon pari</button>
+</form>

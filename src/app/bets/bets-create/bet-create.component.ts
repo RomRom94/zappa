@@ -1,20 +1,25 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 import { Bet } from '../bet.model';
+
 
 @Component({
   selector: 'app-bet-create',
   templateUrl: './bet-create.component.html'
 })
 export class BetCreateComponent {
-  betTitle = '';
-  betContent = '';
+  title = '';
+  content = '';
   @Output() betCreated = new EventEmitter<Bet>();
 
-  onAddBet() {
+  onAddBet(form: NgForm) {
+    if (form.invalid) {
+      return;
+    }
     const bet: Bet = {
-      title: this.betTitle,
-      content: this.betContent
+      title: form.value.title,
+      content: form.value.content
     };
     this.betCreated.emit(bet);
   }
