@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Bet } from './bets/bet.model';
 
 @Component({
   selector: 'app-root',
@@ -7,9 +6,4 @@ import { Bet } from './bets/bet.model';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  storedBets: Bet[] = [];
-
-  onBetAdded(bet) {
-    this.storedBets.push(bet);
-  }
 }

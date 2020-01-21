@@ -1,7 +1,7 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
-import { Bet } from '../bet.model';
+import { BetsService } from '../bets.service';
 
 
 @Component({
@@ -11,16 +11,13 @@ import { Bet } from '../bet.model';
 export class BetCreateComponent {
   title = '';
   content = '';
-  @Output() betCreated = new EventEmitter<Bet>();
+  constructor(public betsService: BetsService ) {}
 
   onAddBet(form: NgForm) {
     if (form.invalid) {
       return;
     }
-    const bet: Bet = {
-      title: form.value.title,
-      content: form.value.content
-    };
-    this.betCreated.emit(bet);
+    this.betsService.addBet(form.value.title, form.value.content);
+    form.resetForm();
   }
 }
