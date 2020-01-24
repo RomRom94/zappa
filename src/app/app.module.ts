@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { BetCreateComponent } from './bets/bets-create/bet-create.component';
 import { BetListComponent } from './bets/bets-list/bet-list.component';
 import { BetsService } from './bets/bets.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -18,9 +19,10 @@ import { BetsService } from './bets/bets.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [BetsService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

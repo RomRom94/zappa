@@ -16,7 +16,7 @@ export class BetListComponent implements OnInit, OnDestroy {
   constructor(public betsService: BetsService) {}
 
   ngOnInit() {
-    this.bets = this.betsService.getBets();
+    this.betsService.getBets();
     this.betsSub = this.betsService.getBetUpdateListener().subscribe((bets: Bet[]) => {
       this.bets = bets;
     });
