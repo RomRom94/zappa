@@ -24,7 +24,11 @@ export class BetsService {
 
   addBet(title: string, content: string) {
     const bet: Bet = {id: null, title: title, content: content};
-    this.bets.push(bet);
-    this.betsUpdated.next([...this.bets]);
+    this.http.post<{message: string}>('http://localhost:3000/api/bets', bet).subscribe((responseData) => {
+      console.log(responseData.message);
+      this.bets.push(bet);
+      this.betsUpdated.next([...this.bets]);
+    });
+
   }
 }
