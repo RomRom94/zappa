@@ -1,7 +1,20 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
+const Bet = require('./models/bet');
+
+const mongoose = require('mongoose')
+
 const app = express();
+
+mongoose.connect('mongodb://localhost:27017/zappa', {useUnifiedTopology: true,
+useNewUrlParser: true,}).then(() => {
+  console.log('ça marche');
+})
+  .catch(() => {
+    console.log('ça marche pas')
+  })
+
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -20,7 +33,10 @@ app.use((req, res, next) => {
 })
 
 app.post("/api/bets", (req, res, next) => {
-  const bet = req.body;
+  const bet = new Bet({
+    title: req.body.title,
+    content: req.body.content
+  });
   console.log(bet);
   res.status(201).json({
     message: 'Bet added successfully'
