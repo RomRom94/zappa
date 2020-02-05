@@ -29,3 +29,13 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## nodemon run server
 
 'nodemon server.js'
+
+## db command
+
+show dbs ==> voir les db
+use zappa ==> créer/utiliser la db zappa
+show collections ==> affiche les tables
+db.'nomtable'.find() ==> affiche le contenu
+
+
+

@@ -1,8 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
+
 
 import { Bet } from '../bet.model';
 import { BetsService } from '../bets.service';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-bet-list',
@@ -20,6 +21,10 @@ export class BetListComponent implements OnInit, OnDestroy {
     this.betsSub = this.betsService.getBetUpdateListener().subscribe((bets: Bet[]) => {
       this.bets = bets;
     });
+  }
+
+  onDelete(betId: string) {
+    this.betsService.deleteBet(betId);
   }
 
   ngOnDestroy() {

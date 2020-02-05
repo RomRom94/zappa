@@ -3,7 +3,7 @@
     {{ bet.title }}
     {{ bet.content }}
     <button>Modifier le pari</button>
-    <button>Supprimer le pari</button>
+    <button (click)="onDelete(bet.id)">Supprimer le pari</button>
   </li>
 </ul>
 
