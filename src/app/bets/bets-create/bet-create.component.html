@@ -1,9 +1,9 @@
 <h2>Créer un pari</h2>
-<form (submit)="onAddBet(betForm)" #betForm="ngForm">
+<form (submit)="onSaveBet(betForm)" #betForm="ngForm">
   <input
    type="text"
    name="title"
-   ngModel
+   [ngModel]="bet?.title"
    required
    placeholder="Titre du pari"
    #title="ngModel">
@@ -11,7 +11,7 @@
   <textarea
    rows="10"
    name="content"
-   ngModel
+   [ngModel]="bet?.content"
    required
    placeholder="Contenu du pari"
    #content="ngModel"></textarea>

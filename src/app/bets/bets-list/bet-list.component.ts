@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-
 import { Bet } from '../bet.model';
 import { BetsService } from '../bets.service';
 
@@ -18,7 +17,8 @@ export class BetListComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.betsService.getBets();
-    this.betsSub = this.betsService.getBetUpdateListener().subscribe((bets: Bet[]) => {
+    this.betsSub = this.betsService.getBetUpdateListener()
+      .subscribe((bets: Bet[]) => {
       this.bets = bets;
     });
   }
