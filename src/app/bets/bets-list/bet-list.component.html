@@ -2,8 +2,8 @@
   <li *ngFor="let bet of bets">
     {{ bet.title }}
     {{ bet.content }}
-    <a [routerLink]="['/edit', bet.id]">Modifier le pari</a>
-    <button (click)="onDelete(bet.id)">Supprimer le pari</button>
+    <a [routerLink]="['/edit', bet.id]" *ngIf="userIsAuthentificated">Modifier le pari</a>
+    <button (click)="onDelete(bet.id)" *ngIf="userIsAuthentificated">Supprimer le pari</button>
   </li>
 </ul>
 

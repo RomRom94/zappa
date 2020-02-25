@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 
 import { Bet } from '../bet.model';
 import { BetsService } from '../bets.service';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-bet-list',
@@ -11,15 +12,23 @@ import { BetsService } from '../bets.service';
 
 export class BetListComponent implements OnInit, OnDestroy {
   bets: Bet[] = [];
+  userIsAuthentificated = false;
   private betsSub: Subscription;
+  private authStatusSub: Subscription;
 
-  constructor(public betsService: BetsService) {}
+  constructor(public betsService: BetsService, private authService: AuthService) {}
 
   ngOnInit() {
     this.betsService.getBets();
     this.betsSub = this.betsService.getBetUpdateListener()
       .subscribe((bets: Bet[]) => {
       this.bets = bets;
+    });
+    this.userIsAuthentificated = this.authService.getIsAuth();
+    this.authStatusSub = this.authService
+    .getAuthStatusListener()
+    .subscribe(isAuthentificated => {
+      this.userIsAuthentificated = isAuthentificated;
     });
   }
 
@@ -29,5 +38,6 @@ export class BetListComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.betsSub.unsubscribe();
+    this.authStatusSub.unsubscribe();
   }
 }

@@ -2,31 +2,44 @@ const express = require('express');
 
 const Bet = require("../models/bet");
 
+const checkAuth = require('../middleware/check-auth');
+
 const router = express.Router();
 
-router.post("", (req, res, next) => {
-  const bet = new Bet({
-    title: req.body.title,
-    content: req.body.content
-  });
-  bet.save().then(createdBet => {
-    res.status(201).json({
-      message: "Bet added successfully",
-      betId: createdBet._id
+router.post(
+  "",
+  checkAuth,
+  (req, res, next) => {
+    const bet = new Bet({
+      title: req.body.title,
+      content: req.body.content
     });
-  });
-});
+    bet.save().then(createdBet => {
+      res.status(201).json({
+        message: "Bet added successfully",
+        bet: {
+          ...createdBet,
+          id: createdBet._id
+        }
+      });
+    });
+  }
+);
 
-router.put("/:id", (req, res, next) => {
-  const bet = new Bet({
-    _id: req.body.id,
-    title: req.body.title,
-    content: req.body.content
-  });
-  Bet.updateOne({ _id: req.params.id }, bet).then(result => {
-    res.status(200).json({ message: 'update'});
-  });
-});
+router.put(
+  "/:id",
+  checkAuth,
+  (req, res, next) => {
+    const bet = new Bet({
+      _id: req.body.id,
+      title: req.body.title,
+      content: req.body.content
+    });
+    Bet.updateOne({ _id: req.params.id }, bet).then(result => {
+      res.status(200).json({ message: 'update'});
+    });
+  }
+);
 
 router.get("", (req, res, next) => {
   Bet.find().then(documents => {
@@ -42,12 +55,12 @@ router.get("/:id", (req, res, next) => {
     if (bet) {
       res.status(200).json(bet);
     } else {
-      res.status(404).json({ message: "Post not found!" });
+      res.status(404).json({ message: "Bet not found!" });
     }
   });
 });
 
-router.delete("/:id", (req, res, next) => {
+router.delete("/:id", checkAuth, (req, res, next) => {
   Bet.deleteOne({ _id: req.params.id }).then(result => {
     console.log(result);
     res.status(200).json({ message: "Bet deleted!" });

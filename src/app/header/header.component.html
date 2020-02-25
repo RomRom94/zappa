@@ -5,20 +5,23 @@
         <a routerLink="/">Mes paris</a>
       </span>
     </li>
-    <li>
+    <li *ngIf="userIsAuthentificated">
       <span>
         <a routerLink="/create">Nouveau pari</a>
       </span>
     </li>
-    <li>
+    <li *ngIf="!userIsAuthentificated">
       <span>
         <a routerLink="/login">Login</a>
       </span>
     </li>
-    <li>
+    <li *ngIf="!userIsAuthentificated">
       <span>
         <a routerLink="/signup">Sign Up</a>
       </span>
+    </li>
+    <li *ngIf="userIsAuthentificated">
+      <button (click)="onLogout()" >Logout</button>
     </li>
   </ul>
 </div>
