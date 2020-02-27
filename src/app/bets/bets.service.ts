@@ -23,6 +23,7 @@ export class BetsService {
             title: bet.title,
             content: bet.content,
             id: bet._id,
+            creator: bet.creator
           };
         });
       }))
@@ -37,7 +38,7 @@ export class BetsService {
   }
 
   getBet(id: string) {
-    return this.http.get<{ _id: string, title: string, content: string }>('http://localhost:3000/api/bets/' + id);
+    return this.http.get<{ _id: string, title: string, content: string, creator: string }>('http://localhost:3000/api/bets/' + id);
   }
 
   addBet(title: string, content: string) {
@@ -54,7 +55,7 @@ export class BetsService {
   }
 
   updateBet(id: string, title: string, content: string) {
-    const bet: Bet = { id: id, title: title, content: content };
+    const bet: Bet = { id: id, title: title, content: content, creator: null };
     this.http
       .put('http://localhost:3000/api/bets' + '/' + id, bet)
       .subscribe(response => {

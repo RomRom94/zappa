@@ -13,6 +13,7 @@ import { AuthService } from 'src/app/auth/auth.service';
 export class BetListComponent implements OnInit, OnDestroy {
   bets: Bet[] = [];
   userIsAuthentificated = false;
+  userId: string;
   private betsSub: Subscription;
   private authStatusSub: Subscription;
 
@@ -20,6 +21,7 @@ export class BetListComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.betsService.getBets();
+    this.userId = this.authService.getUserId();
     this.betsSub = this.betsService.getBetUpdateListener()
       .subscribe((bets: Bet[]) => {
       this.bets = bets;
@@ -29,6 +31,7 @@ export class BetListComponent implements OnInit, OnDestroy {
     .getAuthStatusListener()
     .subscribe(isAuthentificated => {
       this.userIsAuthentificated = isAuthentificated;
+      this.userId = this.authService.getUserId();
     });
   }
 
