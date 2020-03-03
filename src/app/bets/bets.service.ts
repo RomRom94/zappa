@@ -38,32 +38,39 @@ export class BetsService {
   }
 
   getBet(id: string) {
-    return this.http.get<{ _id: string, title: string, content: string, creator: string }>('http://localhost:3000/api/bets/' + id);
+    return this.http.get<{
+      _id: string,
+      title: string,
+      content: string,
+      creator: string;
+    }>('http://localhost:3000/api/bets/' + id);
   }
 
   addBet(title: string, content: string) {
-    const bet: Bet = { id: null, title: title, content: content };
+    const betData = new FormData();
+    betData.append('title', title);
+    betData.append('content', content);
     this.http
-      .post<{ message: string, betId: string }>('http://localhost:3000/api/bets', bet)
+      .post<{ message: string; bet: Bet }>(
+        'http://localhost:3000/api/bets',
+        betData
+      )
       .subscribe(responseData => {
-        const id = responseData.betId;
-        bet.id = id;
-        this.bets.push(bet);
-        this.betsUpdated.next([...this.bets]);
         this.router.navigate(['/']);
       });
   }
 
   updateBet(id: string, title: string, content: string) {
-    const bet: Bet = { id: id, title: title, content: content, creator: null };
+    let betData: Bet | FormData;
+    betData = {
+      id: id,
+      title: title,
+      content: content,
+      creator: null
+    };
     this.http
-      .put('http://localhost:3000/api/bets' + '/' + id, bet)
+      .put('http://localhost:3000/api/bets/' + id, betData)
       .subscribe(response => {
-        const updatedBets = [...this.bets];
-        const oldBetIndex = updatedBets.findIndex(b => b.id === bet.id);
-        updatedBets[oldBetIndex] = bet;
-        this.bets = updatedBets;
-        this.betsUpdated.next([...this.bets]);
         this.router.navigate(['/']);
       });
   }

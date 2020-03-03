@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { AuthService } from '../auth.service';
 
 @Component({
+  selector: 'app-connection-signup',
   templateUrl: './signup.component.html'
 })
 

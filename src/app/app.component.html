@@ -1,4 +1,8 @@
-<app-header></app-header>
-<main>
+<div *ngIf="!userIsAuthentificated">
+  <app-connection-login></app-connection-login>
+  <app-connection-signup></app-connection-signup>
+</div>
+<main *ngIf="userIsAuthentificated">
+  <app-header></app-header>
   <router-outlet></router-outlet>
 </main>
