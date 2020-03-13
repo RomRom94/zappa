@@ -13,7 +13,6 @@ router.post(
     const bet = new Bet({
       title: req.body.title,
       content: req.body.content,
-      creator: req.userData.userId
     });
     bet.save().then(createdBet => {
       res.status(201).json({
@@ -37,7 +36,7 @@ router.put(
       content: req.body.content,
       userId: req.userData.userId
     });
-    Bet.updateOne({ _id: req.params.id, creator: req.userData.userId }, bet).then(result => {
+    Bet.updateOne({ _id: req.params.id}, bet).then(result => {
       if (result.nModified > 0){
         res.status(200).json({ message: 'update'});
       } else {
@@ -67,7 +66,7 @@ router.get("/:id", (req, res, next) => {
 });
 
 router.delete("/:id", checkAuth, (req, res, next) => {
-  Bet.deleteOne({ _id: req.params.id, creator: req.userData.userId }).then(result => {
+  Bet.deleteOne({ _id: req.params.id}).then(result => {
     if (result.n > 0){
       res.status(200).json({ message: 'Bet deleted'});
     } else {
@@ -77,3 +76,4 @@ router.delete("/:id", checkAuth, (req, res, next) => {
 });
 
 module.exports = router;
+

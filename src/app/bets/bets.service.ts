@@ -23,7 +23,6 @@ export class BetsService {
             title: bet.title,
             content: bet.content,
             id: bet._id,
-            creator: bet.creator
           };
         });
       }))
@@ -42,7 +41,6 @@ export class BetsService {
       _id: string,
       title: string,
       content: string,
-      creator: string;
     }>('http://localhost:3000/api/bets/' + id);
   }
 
@@ -66,7 +64,6 @@ export class BetsService {
       id: id,
       title: title,
       content: content,
-      creator: null
     };
     this.http
       .put('http://localhost:3000/api/bets/' + id, betData)

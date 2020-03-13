@@ -28,7 +28,7 @@ export class BetCreateComponent implements OnInit {
         this.mode = 'edit';
         this.betId = paramMap.get('betId');
         this.betsService.getBet(this.betId).subscribe(betData => {
-          this.bet = {id: betData._id, title: betData.title, content: betData.content, creator: betData.creator};
+          this.bet = {id: betData._id, title: betData.title, content: betData.content};
         });
       } else {
         this.mode = 'create';
