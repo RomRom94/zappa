@@ -1,5 +1,5 @@
 <div class="container">
-  <!-- <div class="loginPage" *ngIf="!userIsAuthentificated">
+  <div class="loginPage" *ngIf="!userIsAuthentificated">
     <div class="loginPage__container">
       <h1>Zap'pa</h1>
       <img class="logo" src="../assets/images/handshake.svg" alt="Logo">
@@ -10,9 +10,8 @@
         <span (click)="toggle()">{{buttonName}}</span>
       </p>
     </div>
-  </div> -->
-  <!-- <main *ngIf="userIsAuthentificated"> -->
-  <main>
+  </div>
+  <main *ngIf="userIsAuthentificated">
     <app-header></app-header>
     <router-outlet></router-outlet>
   </main>
