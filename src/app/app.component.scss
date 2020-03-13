@@ -1,0 +1,35 @@
+// Title
+@import url('https://fonts.googleapis.com/css?family=Parisienne&display=swap');
+
+h1{
+  font-family: 'Parisienne', cursive;
+  font-size: 42px;
+  text-align: center;
+}
+
+// LOGIN PAGE
+.loginPage{
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  background-color: #F6E3E1;
+
+  &__container{
+    margin: 0 auto;
+    & .logo{
+      display: block;
+      width: 100px;
+      margin: 0 auto 20px auto;
+    }
+
+    &__switch{
+      text-align: center;
+      font-weight: 300;
+
+      & span{
+        font-weight: 500;
+        text-decoration: underline;
+      }
+    }
+  }
+}

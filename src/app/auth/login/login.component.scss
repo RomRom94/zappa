@@ -1,0 +1,33 @@
+form{
+  margin: 0 auto 30px auto;
+  padding: 20px 10px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+
+  & input{
+    background-color: transparent;
+    border: none;
+    border-bottom: solid 1px #c5c5c5;
+    outline: none;
+    margin-bottom: 30px;
+    font-family: 'Montserrat';
+    font-weight: 300;
+    color: #000;
+
+    &::placeholder{
+      color: #000;
+    }
+  }
+
+  & button{
+    appearance: none;
+    margin: 0 auto;
+    width: 200px;
+    height: 45px;
+    border: none;
+    border-radius: 25px;
+    background-color: #F6E3E1;
+  }
+}

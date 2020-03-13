@@ -8,7 +8,7 @@
    required
    email
   >
-  <span *ngIf="emailInput.invalid">Veuillez entrer une adresse valide.</span>
+  <!-- <span *ngIf="emailInput.invalid">Veuillez entrer une adresse valide.</span> -->
   <input
   type="password"
   placeholder="Mot de passe"
@@ -17,7 +17,7 @@
   #passwordInput="ngModel"
   required
  >
- <span *ngIf="passwordInput.invalid">Veuillez entrer un mot de passe valide.</span>
+ <!-- <span *ngIf="passwordInput.invalid">Veuillez entrer un mot de passe valide.</span> -->
 
   <button type="submit">Sign up</button>
 </form>
