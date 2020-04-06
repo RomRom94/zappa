@@ -10,6 +10,8 @@ router.post(
   "",
   checkAuth,
   (req, res, next) => {
+
+    console.log(req.body)
     const bet = new Bet({
       title: req.body.title,
       content: req.body.content,

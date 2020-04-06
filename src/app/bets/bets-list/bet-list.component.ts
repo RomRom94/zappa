@@ -7,7 +7,8 @@ import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-bet-list',
-  templateUrl: './bet-list.component.html'
+  templateUrl: './bet-list.component.html',
+  styleUrls: ['./bet-list.component.scss'],
 })
 
 export class BetListComponent implements OnInit, OnDestroy {

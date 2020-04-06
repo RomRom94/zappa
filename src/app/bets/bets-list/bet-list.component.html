@@ -1,5 +1,5 @@
 <ul *ngIf="bets.length > 0">
-  <li *ngFor="let bet of bets">
+  <li *ngFor="let bet of bets" class="bet">
     {{ bet.title }}
     {{ bet.content }}
     <a [routerLink]="['/edit', bet.id]" *ngIf="userIsAuthentificated && userId === bet.creator">Modifier le pari</a>

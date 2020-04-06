@@ -17,6 +17,7 @@ export class AppComponent implements OnInit, OnDestroy {
   public buttonText: any = 'Pas encore inscris ?';
 
   ngOnInit() {
+    this.authService.autoAuthUser();
     this.userIsAuthentificated = this.authService.getIsAuth();
     this.authListenerSubs = this.authService.getAuthStatusListener().subscribe(isAuthentificated => {
       this.userIsAuthentificated = isAuthentificated;

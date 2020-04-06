@@ -50,22 +50,29 @@ export class BetsService {
     const betData = new FormData();
     betData.append('title', title);
     betData.append('content', content);
-    this.http
+
+    this.http.post('http://localhost:3000/api/bets', { title, content })
+    .toPromise()
+    .then( apiResponse => { console.log(apiResponse); })
+    .catch( apiError => { console.log(apiError); });
+
+
+    /* this.http
       .post<{ message: string; bet: Bet }>(
         'http://localhost:3000/api/bets',
         betData
       )
       .subscribe(responseData => {
         this.router.navigate(['/']);
-      });
+      }); */
   }
 
   updateBet(id: string, title: string, content: string) {
     let betData: Bet | FormData;
     betData = {
-      id: id,
-      title: title,
-      content: content,
+      id,
+      title,
+      content,
       creator: null
     };
     this.http
