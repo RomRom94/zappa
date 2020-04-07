@@ -15,7 +15,8 @@ router.post(
     const bet = new Bet({
       title: req.body.title,
       content: req.body.content,
-      creator: req.userData.userId
+      creator: req.userData.userId,
+      type: req.body.type,
     });
     bet.save().then(createdBet => {
       res.status(201).json({
@@ -37,7 +38,8 @@ router.put(
       _id: req.body.id,
       title: req.body.title,
       content: req.body.content,
-      userId: req.userData.userId
+      userId: req.userData.userId,
+      type: req.body.type,
     });
     Bet.updateOne({ _id: req.params.id, creator: req.userData.userId }, bet).then(result => {
       if (result.nModified > 0){

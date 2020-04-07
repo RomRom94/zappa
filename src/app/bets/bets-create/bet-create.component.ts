@@ -13,6 +13,8 @@ import { Bet } from '../bet.model';
 export class BetCreateComponent implements OnInit {
   title = '';
   content = '';
+  type = '';
+  endDate: '';
   bet: Bet;
   private mode = 'create';
   private betId: string;
@@ -28,7 +30,13 @@ export class BetCreateComponent implements OnInit {
         this.mode = 'edit';
         this.betId = paramMap.get('betId');
         this.betsService.getBet(this.betId).subscribe(betData => {
-          this.bet = {id: betData._id, title: betData.title, content: betData.content, creator: betData.creator};
+          this.bet = {
+            id: betData._id,
+            title: betData.title,
+            content: betData.content,
+            creator: betData.creator,
+            type: betData.type,
+          };
         });
       } else {
         this.mode = 'create';
@@ -42,12 +50,13 @@ export class BetCreateComponent implements OnInit {
       return;
     }
     if (this.mode === 'create') {
-      this.betsService.addBet(form.value.title, form.value.content);
+      this.betsService.addBet(form.value.title, form.value.content, form.value.type);
     } else {
       this.betsService.updateBet(
         this.betId,
         form.value.title,
-        form.value.content
+        form.value.content,
+        form.value.type,
         );
     }
     form.resetForm();

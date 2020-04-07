@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="66px" height="74px" viewBox="0 0 66 74" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
+    <title>noun_homepage_742742</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="75" height="92"></rect>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="noun_homepage_742742" transform="translate(-5.000000, -10.000000)">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Mask" fill-opacity="0" fill="#D8D8D8" xlink:href="#path-1"></use>
+            <g mask="url(#mask-2)" fill="#000000" fill-rule="nonzero" id="Shape">
+                <g transform="translate(-12.000000, 10.000000)">
+                    <path d="M58.1,73.2 L73.8,73.2 C74.4,73.2 74.8,72.8 74.8,72.2 L74.8,33.5 L81.2,33.5 C81.6,33.5 82,33.3 82.1,32.9 C82.3,32.5 82.2,32.1 81.9,31.8 L50.7,0.6 C50.3,0.2 49.7,0.2 49.3,0.6 L18.1,31.8 C17.8,32.1 17.7,32.5 17.9,32.9 C18.1,33.3 18.4,33.5 18.8,33.5 L25.2,33.5 L25.2,72.2 C25.2,72.8 25.6,73.2 26.2,73.2 L41.9,73.2 C42.5,73.2 42.9,72.8 42.9,72.2 L42.9,46.4 L57.1,46.4 L57.1,72.2 C57.1,72.8 57.6,73.2 58.1,73.2 Z M41.9,44.4 C41.3,44.4 40.9,44.8 40.9,45.4 L40.9,71.2 L27.1,71.2 L27.1,32.5 C27.1,31.9 26.7,31.5 26.1,31.5 L21.2,31.5 L50,2.7 L78.8,31.5 L73.9,31.5 C73.3,31.5 72.9,31.9 72.9,32.5 L72.9,71.2 L59.1,71.2 L59.1,45.4 C59.1,44.8 58.7,44.4 58.1,44.4 L41.9,44.4 Z"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

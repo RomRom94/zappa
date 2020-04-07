@@ -7,7 +7,6 @@
    required
    placeholder="Titre du pari"
    #title="ngModel">
-  <span *ngIf="title.invalid">Veuillez entrer le titre du pari.</span>
   <textarea
    rows="10"
    name="content"
@@ -15,6 +14,16 @@
    required
    placeholder="Contenu du pari"
    #content="ngModel"></textarea>
-  <span *ngIf="content.invalid">Veuillez entrer le contenu du pari.</span>
+  <select
+  name="type"
+  id=""
+  [ngModel]="bet?.type"
+  required
+  #type="ngModel">
+    <option value="" disabled>Type de pari</option>
+    <option value="defi">Défi</option>
+    <option value="promesse">Promesse</option>
+    <option value="objectif">Objectif</option>
+  </select>
   <button type="submit">Valider mon pari</button>
 </form>

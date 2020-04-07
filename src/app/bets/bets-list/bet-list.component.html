@@ -6,9 +6,10 @@
       <p class="bet__content__date">Mardi 10 janvier</p>
       <h3 class="bet__content__title">{{ bet.title }}</h3>
       <p class="bet__content__resume">{{ bet.content }}</p>
+      <p class="bet__content__resume">{{ bet.type }}</p>
     </div>
-    <!-- <a [routerLink]="['/edit', bet.id]" *ngIf="userIsAuthentificated && userId === bet.creator">Modifier le pari</a> -->
-    <!-- <button (click)="onDelete(bet.id)" *ngIf="userIsAuthentificated">Supprimer le pari</button> -->
+    <a [routerLink]="['/edit', bet.id]" *ngIf="userIsAuthentificated && userId === bet.creator">Modifier le pari</a>
+    <button (click)="onDelete(bet.id)" *ngIf="userIsAuthentificated">Supprimer le pari</button>
   </li>
 </ul>
 

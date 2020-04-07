@@ -3,4 +3,5 @@ export interface Bet {
   title: string;
   content: string;
   creator: string;
+  type: string;
 }

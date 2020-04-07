@@ -1,5 +1,41 @@
 @import '../../assets/scss/variables';
 
-div {
+.header {
   background-color: $pink;
+  height: 60px;
+  padding: 0 20px;
+
+  &__menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+
+    &__user {
+      display: block;
+      width: 30px;
+      height: 30px;
+      background: url(../../assets/images/user.png);
+      background-size: contain;
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
+
+    &__title {
+      font-family: 'Parisienne', cursive;
+      font-size: 24px;
+      text-align: center;
+    }
+
+    &__logout button {
+      display: block;
+      width: 30px;
+      height: 30px;
+      background: url(../../assets/images/logout.svg);
+      background-size: contain;
+      background-position: center center;
+      background-repeat: no-repeat;
+      border: none;
+    }
+  }
 }

@@ -1,27 +1,17 @@
-<div>
-  <ul>
+<div class="header">
+  <ul class="header__menu">
     <li>
       <span>
-        <a routerLink="/">Mes paris</a>
+        <a routerLink="/user" class="header__menu__user"></a>
       </span>
     </li>
-    <li *ngIf="userIsAuthentificated">
+    <li>
       <span>
-        <a routerLink="/create">Nouveaux paris</a>
+        <a routerLink="/user" class="header__menu__title">Zap'pa</a>
       </span>
     </li>
-    <li *ngIf="!userIsAuthentificated">
-      <span>
-        <a routerLink="/login">Login</a>
-      </span>
-    </li>
-    <li *ngIf="!userIsAuthentificated">
-      <span>
-        <a routerLink="/signup">Sign Up</a>
-      </span>
-    </li>
-    <li *ngIf="userIsAuthentificated">
-      <button (click)="onLogout()" >Logout</button>
+    <li *ngIf="userIsAuthentificated" class="header__menu__logout">
+      <button (click)="onLogout()"></button>
     </li>
   </ul>
 </div>
