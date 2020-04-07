@@ -1,5 +1,6 @@
 // Title
 @import url('https://fonts.googleapis.com/css?family=Parisienne&display=swap');
+@import '../assets/scss/variables';
 
 h1{
   font-family: 'Parisienne', cursive;
@@ -12,7 +13,7 @@ h1{
   display: flex;
   align-items: center;
   height: 100vh;
-  background-color: #F6E3E1;
+  background-color: $pink;
 
   &__container{
     margin: 0 auto;
@@ -32,4 +33,11 @@ h1{
       }
     }
   }
+}
+
+// Page container
+
+.page-container {
+  width: 90%;
+  margin: 20px auto;
 }

@@ -13,6 +13,8 @@
   </div>
   <main *ngIf="userIsAuthentificated">
     <app-header></app-header>
-    <router-outlet></router-outlet>
+    <div class="page-container">
+      <router-outlet></router-outlet>
+    </div>
   </main>
 </div>

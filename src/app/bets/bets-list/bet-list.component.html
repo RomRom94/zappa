@@ -1,10 +1,17 @@
+<h2>Zap'pa de la semaine</h2>
+
 <ul *ngIf="bets.length > 0">
   <li *ngFor="let bet of bets" class="bet">
-    {{ bet.title }}
-    {{ bet.content }}
-    <a [routerLink]="['/edit', bet.id]" *ngIf="userIsAuthentificated && userId === bet.creator">Modifier le pari</a>
-    <button (click)="onDelete(bet.id)" *ngIf="userIsAuthentificated">Supprimer le pari</button>
+    <div class="bet__content">
+      <p class="bet__content__date">Mardi 10 janvier</p>
+      <h3 class="bet__content__title">{{ bet.title }}</h3>
+      <p class="bet__content__resume">{{ bet.content }}</p>
+    </div>
+    <!-- <a [routerLink]="['/edit', bet.id]" *ngIf="userIsAuthentificated && userId === bet.creator">Modifier le pari</a> -->
+    <!-- <button (click)="onDelete(bet.id)" *ngIf="userIsAuthentificated">Supprimer le pari</button> -->
   </li>
 </ul>
+
+<a routerLink="/create" class="add-bet"></a>
 
 <p *ngIf="bets.length <= 0">No bets render yet</p>
