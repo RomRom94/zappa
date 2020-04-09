@@ -1,0 +1,43 @@
+@import '../../../assets/scss/variables';
+
+h2 {
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 20px;
+  text-decoration: underline;
+}
+
+.friends {
+  &__item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    border: solid 1px $pink;
+    border-radius: 30px;
+    padding: 10px;
+    margin-bottom: 5px;
+    background-color: $pink;
+
+    &__picture {
+      width: 30px;
+      height: 30px;
+      background: $white url(../../../assets/images/user.png);
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    &__lastname {
+      margin-right: 5px;
+      font-size: 16px;
+      font-weight: 300;
+    }
+
+    &__firstname {
+      font-size: 16px;
+      font-weight: 300;
+    }
+  }
+}

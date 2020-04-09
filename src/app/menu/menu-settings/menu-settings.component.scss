@@ -1,0 +1,111 @@
+@import '../../../assets/scss/variables';
+
+h2 {
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 20px;
+  text-decoration: underline;
+}
+
+h3 {
+  text-transform: uppercase;
+  font-size: 16px;
+}
+
+ul {
+  margin: 10px 0 30px 0;
+  li {
+    font-weight: 300;
+    border-top: solid 1px #D3D3D3;
+    font-size: 14px;
+    padding-left: 25px;
+    height: 40px;
+    line-height: 40px;
+    background-size: 15px;
+    background-position: left center;
+    background-repeat: no-repeat;
+
+    &:last-of-type {
+      border-bottom: solid 1px #D3D3D3;
+    }
+
+    & a {
+      position: relative;
+      display: block;
+      width: 100%;
+
+      &:after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translate(-20px, -50%);
+        width: 15px;
+        height: 15px;
+        background: url(../../../assets/images/next.svg);
+        background-size: contain;
+        background-position: center center;
+        background-repeat: no-repeat;
+      }
+    }
+
+    &.profil {
+      background: url(../../../assets/images/user.svg) no-repeat left center/15px;
+    }
+
+    &.push {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: url(../../../assets/images/notification.svg) no-repeat left center/15px;
+
+      & .toggle {
+        position: relative;
+        width: 45px;
+        height: 20px;
+        border-radius: 20px;
+        background-color: $pink;
+        margin-right: 8px;
+        border: none;
+        outline: none;
+
+        & span {
+          position: absolute;
+          left: 0;
+          top: 50%;
+          transform: translate(0px, -50%);
+          width: 25px;
+          height: 25px;
+          background-color: $white;
+          border-radius: 50%;
+          border: solid 1px $pink;
+          transition: .4s ease;
+
+          &.on {
+            transform: translate(25px, -50%);
+          }
+        }
+      }
+    }
+
+    &.services {
+      background: url(../../../assets/images/lock.svg) no-repeat left center/15px;
+    }
+
+    &.problem {
+      background: url(../../../assets/images/warning.svg) no-repeat left center/15px;
+    }
+
+    &.cache {
+      background: url(../../../assets/images/delete.svg) no-repeat left center/15px;
+    }
+
+    &.help {
+      background: url(../../../assets/images/question.svg) no-repeat left center/15px;
+    }
+
+    &.confidentiality {
+      background: url(../../../assets/images/private.svg) no-repeat left center/15px;
+    }
+  }
+}

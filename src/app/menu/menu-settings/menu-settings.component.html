@@ -1,0 +1,35 @@
+<h3>mon compte</h3>
+<ul>
+  <li class="profil">
+    <a routerLink="/">Éditer mon profil</a>
+  </li>
+  <li class="push">
+    Notifications push
+    <button class="toggle" (click)="toToggle()">
+      <span [ngClass]="status ? 'on' : 'off'"></span>
+    </button>
+  </li>
+</ul>
+
+<h3>informations</h3>
+<ul>
+  <li class="confidentiality">
+    <a routerLink="/">Politiques de confidentialité</a>
+  </li>
+  <li class="services">
+    <a routerLink="/">Conditions de services</a>
+  </li>
+</ul>
+
+<h3>assistance</h3>
+<ul>
+  <li class="problem">
+    <a routerLink="/">Signaler un problème</a>
+  </li>
+  <li class="cache">
+    <a routerLink="/">Vider le cache</a>
+  </li>
+  <li class="help">
+    <a routerLink="/">Centre d'aide</a>
+  </li>
+</ul>

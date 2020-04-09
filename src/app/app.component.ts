@@ -12,7 +12,7 @@ export class AppComponent implements OnInit, OnDestroy {
   private authListenerSubs: Subscription;
   constructor(private authService: AuthService) {}
 
-  public signup: boolean = false;
+  public signup = false;
   public buttonName: any = 'Inscris toi ici !';
   public buttonText: any = 'Pas encore inscris ?';
 

@@ -1,0 +1,19 @@
+<div class="menu">
+  <div class="menu__profile">
+    <div class="menu__profile__picture"></div>
+    <h2 class="menu__profile__username">Username</h2>
+    <a routerLink="/" class="menu__profile__edit"></a>
+  </div>
+  <div class="menu__table">
+    <div class="menu__table__title">
+      <h2 (click)="toggleBets()">Mes zap'pa</h2>
+      <h2 (click)="toggleFriends()">Mes amis</h2>
+      <h2 (click)="toggleSettings()">Paramètres</h2>
+    </div>
+    <div class="menu__table__content">
+      <app-bet-list *ngIf="bets"></app-bet-list>
+      <app-menu-settings *ngIf="settings"></app-menu-settings>
+      <app-menu-friends *ngIf="friends"></app-menu-friends>
+    </div>
+  </div>
+</div>
