@@ -27,6 +27,13 @@ export class AuthService {
     return this.userId;
   }
 
+  getUser(id: string) {
+    return this.http.get<{
+      email: string,
+      password: string,
+    }>('http://localhost:3000/api/user/' + id);
+  }
+
   getAuthStatusListener() {
     return this.authStatusListener.asObservable();
   }

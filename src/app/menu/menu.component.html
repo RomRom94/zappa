@@ -1,8 +1,8 @@
 <div class="menu">
   <div class="menu__profile">
     <div class="menu__profile__picture"></div>
-    <h2 class="menu__profile__username">Username</h2>
-    <a routerLink="/" class="menu__profile__edit"></a>
+    <h2 class="menu__profile__username">{{ authData.email }}</h2>
+    <a [routerLink]="['/user/', userId]" class="menu__profile__edit"></a>
   </div>
   <div class="menu__table">
     <div class="menu__table__title">

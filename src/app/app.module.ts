@@ -14,6 +14,7 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { AuthInterceptor } from './auth/auth-interceptor';
 import { MenuSettingsComponent } from './menu/menu-settings/menu-settings.component';
 import { MenuFriendsComponent } from './menu/menu-friends/menu-friends.component';
+import { UserComponent } from './auth/user/user.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { MenuFriendsComponent } from './menu/menu-friends/menu-friends.component
     SignupComponent,
     MenuComponent,
     MenuSettingsComponent,
-    MenuFriendsComponent
+    MenuFriendsComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
