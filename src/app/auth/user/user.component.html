@@ -1,2 +1,54 @@
-{{ authData.email }}
-{{ authData.password }}
+<form>
+  <label for="email">Email
+    <input
+    type="email"
+    placeholder="Adresse e-mail"
+    ngModel
+    name="email"
+    id="email"
+    #emailInput="ngModel"
+    required
+    email
+    value="{{ authData.email }}"
+   >
+  </label>
+
+  <label for="password">Mot de passe
+    <input
+    type="password"
+    placeholder="Mot de passe"
+    name="password"
+    id="password"
+    ngModel
+    #passwordInput="ngModel"
+    required
+    value="{{ authData.password }}"
+   >
+  </label>
+
+  <label for="firstname">Nom
+    <input
+    type="text"
+    placeholder="Firstname"
+    name="Firstname"
+    id="password"
+    ngModel
+    #passwordInput="ngModel"
+    required
+    value="{{ authData.firstname }}"
+   >
+  </label>
+
+  <label for="lastname">Prénom
+    <input
+    type="text"
+    placeholder="Lastname"
+    name="Lastname"
+    ngModel
+    #passwordInput="ngModel"
+    required
+    value="{{ authData.lastname }}"
+    >
+  </label>
+</form>
+

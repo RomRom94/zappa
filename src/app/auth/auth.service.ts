@@ -31,6 +31,8 @@ export class AuthService {
     return this.http.get<{
       email: string,
       password: string,
+      firstname: string,
+      lastname: string
     }>('http://localhost:3000/api/user/' + id);
   }
 
@@ -38,17 +40,18 @@ export class AuthService {
     return this.authStatusListener.asObservable();
   }
 
-  createUser(email: string, password: string) {
-    const authData: AuthData = { email: email, password: password };
+  createUser(email: string, password: string, firstname: string, lastname: string) {
+    const authData: AuthData = { email, password, firstname, lastname};
     this.http
       .post('http://localhost:3000/api/user/signup', authData)
       .subscribe(response => {
+        this.login(email, password, firstname, lastname);
         console.log(response);
       });
   }
 
-  login(email: string, password: string) {
-    const authData: AuthData = { email: email, password: password };
+  login(email: string, password: string, firstname: string, lastname: string) {
+    const authData: AuthData = { email, password, firstname, lastname };
     this.http
       .post<{ token: string; expiresIn: number, userId: string }>(
         'http://localhost:3000/api/user/login',
@@ -125,9 +128,9 @@ export class AuthService {
       return;
     }
     return {
-      token: token,
+      token,
       expirationDate: new Date(expirationDate),
-      userId: userId
+      userId
     };
   }
 }

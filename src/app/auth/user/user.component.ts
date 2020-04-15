@@ -22,6 +22,8 @@ export class UserComponent implements OnInit {
         this.authData = {
           email: postData.email,
           password: postData.password,
+          firstname: postData.firstname,
+          lastname: postData.lastname
         };
       });
     });
