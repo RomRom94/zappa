@@ -33,10 +33,10 @@ export class UserComponent implements OnInit {
     });
   }
 
-  // onUpdate(form: NgForm) {
-  //   if (form.invalid) {
-  //     return;
-  //   }
-  //   this.authService.update(this.userId, form.value.email, form.value.password, form.value.firstname, form.value.lastname);
-  // }
+  onUpdate(form: NgForm) {
+    if (form.invalid) {
+      return;
+    }
+    this.authService.update(this.userId, form.value.email, form.value.password, form.value.firstname, form.value.lastname);
+  }
 }

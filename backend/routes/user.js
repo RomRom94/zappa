@@ -1,6 +1,8 @@
 const express = require("express");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const mongoose = require("mongoose");
+mongoose.set('useCreateIndex', true);
 
 const User = require("../models/user");
 
@@ -64,21 +66,28 @@ router.post("/login", (req, res, next) => {
     });
 });
 
-// router.put("/:id", (req, res, next) => {
-//   const user = new User({
-//     email: req.body.email,
-//     password: req.body.password,
-//     firstname: req.body.firstname,
-//     lastname: req.body.lastname,
-//   });
-//   User.updateOne({ _id: req.params.id }, user).then(result => {
-//     if (result.nModified > 0){
-//       res.status(200).json({ message: 'update'});
-//     } else {
-//     res.status(401).json({ message: 'Not authorized'});
-//     }
-//   });
-// });
+router.put(
+  "/:id",
+  (req, res, next) => {
+    const user = new User({
+      email: req.body.email,
+      password: req.body.password,
+    });
+    if(mongoose.Types.ObjectId.isValid(req.params.id)) {
+    User.findByIdAndUpdate(req.params.id,{$set:{email:user.email}},{new:true, useFindAndModify: false}).then((docs)=>{
+      if(docs) {
+        console.log('data modifiées')
+      } else {
+        console.log('Je suis dans le if docs false')
+      }
+    }).catch((err)=>{
+      console.log(err)
+    })
+    } else {
+      reject({success:"false",data:"provide correct key"});
+    }
+  }
+);
 
 router.get("/:id", (req, res, next) => {
   User.findById(req.params.id).then(user => {

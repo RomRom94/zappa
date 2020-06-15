@@ -59,16 +59,6 @@ export class BetsService {
     .toPromise()
     .then( apiResponse => { console.log(apiResponse); })
     .catch( apiError => { console.log(apiError); });
-
-
-    /* this.http
-      .post<{ message: string; bet: Bet }>(
-        'http://localhost:3000/api/bets',
-        betData
-      )
-      .subscribe(responseData => {
-        this.router.navigate(['/']);
-      }); */
   }
 
   updateBet(id: string, title: string, content: string, type: string) {

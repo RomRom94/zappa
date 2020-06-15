@@ -35,10 +35,10 @@
       <input
         type="text"
         placeholder="Firstname"
-        name="Firstname"
+        name="firstname"
         id="firstname"
         [(ngModel)]="authData.firstname"
-        #passwordInput="ngModel"
+        #firstnameInput="ngModel"
         required
         value="{{ authData.firstname }}"
         *ngIf="authData"
@@ -51,10 +51,10 @@
       <input
         type="text"
         placeholder="Lastname"
-        name="Lastname"
+        name="lastname"
         id="lastname"
         [(ngModel)]="authData.lastname"
-        #passwordInput="ngModel"
+        #lastnameInput="ngModel"
         required
         value="{{ authData.lastname }}"
       >
