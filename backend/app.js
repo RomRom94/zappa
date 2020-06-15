@@ -8,7 +8,7 @@ const userRoutes = require("./routes/user");
 const app = express();
 
 mongoose
-  .connect('mongodb+srv://RomRom94:BDl88yxkcc7kjWNt@zappa-cpskz.mongodb.net/Zappa?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true })
+  .connect('mongodb+srv://RomRom94:gzAjIJKMAMRQbnKf@zappa-cpskz.mongodb.net/zappa?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true })
   // .connect(
   //   'mongodb://localhost:27017/zappa', {useUnifiedTopology: true,
   // useNewUrlParser: true,}
