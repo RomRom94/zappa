@@ -75,6 +75,21 @@ export class AuthService {
       });
   }
 
+  // update(id: string, email: string, password: string, firstname: string, lastname: string) {
+  //   let authData: AuthData | FormData;
+  //   authData = {
+  //     email,
+  //     password,
+  //     firstname,
+  //     lastname,
+  //   };
+  //   this.http
+  //     .put('http://localhost:3000/api/user/' + id, authData)
+  //     .subscribe(response => {
+  //       this.router.navigate(['/']);
+  //     });
+  // }
+
   autoAuthUser() {
     const authInformation = this.getAuthData();
     if (!authInformation) {

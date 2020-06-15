@@ -64,6 +64,22 @@ router.post("/login", (req, res, next) => {
     });
 });
 
+// router.put("/:id", (req, res, next) => {
+//   const user = new User({
+//     email: req.body.email,
+//     password: req.body.password,
+//     firstname: req.body.firstname,
+//     lastname: req.body.lastname,
+//   });
+//   User.updateOne({ _id: req.params.id }, user).then(result => {
+//     if (result.nModified > 0){
+//       res.status(200).json({ message: 'update'});
+//     } else {
+//     res.status(401).json({ message: 'Not authorized'});
+//     }
+//   });
+// });
+
 router.get("/:id", (req, res, next) => {
   User.findById(req.params.id).then(user => {
     if (user) {

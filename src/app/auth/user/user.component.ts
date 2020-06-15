@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthData } from '../auth-data.model';
 import { AuthService } from '../auth.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { NgForm } from '@angular/forms';
 
 
 @Component ({
@@ -18,14 +19,24 @@ export class UserComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       this.userId = paramMap.get('userId');
-      this.authService.getUser(this.userId).subscribe(postData => {
-        this.authData = {
-          email: postData.email,
-          password: postData.password,
-          firstname: postData.firstname,
-          lastname: postData.lastname
-        };
+      this.authService.getUser(this.userId).subscribe(async (response: any) => {
+        this.authData = await response;
+        if (response) {
+          this.authData = {
+            email: response.email,
+            password: response.password,
+            firstname: response.firstname,
+            lastname: response.lastname
+          };
+        }
       });
     });
   }
+
+  // onUpdate(form: NgForm) {
+  //   if (form.invalid) {
+  //     return;
+  //   }
+  //   this.authService.update(this.userId, form.value.email, form.value.password, form.value.firstname, form.value.lastname);
+  // }
 }

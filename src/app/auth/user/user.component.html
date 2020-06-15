@@ -1,54 +1,65 @@
-<form>
+<form (submit)="onUpdate(updateForm)" #updateForm="ngForm" class="updateForm">
   <label for="email">Email
-    <input
-    type="email"
-    placeholder="Adresse e-mail"
-    ngModel
-    name="email"
-    id="email"
-    #emailInput="ngModel"
-    required
-    email
-    value="{{ authData.email }}"
-   >
+    <div *ngIf="authData">
+      <input
+        type="email"
+        placeholder="Adresse e-mail"
+        [(ngModel)]="authData.email"
+        name="email"
+        id="email"
+        #emailInput="ngModel"
+        required
+        email
+        value="{{ authData.email }}"
+      >
+    </div>
   </label>
 
-  <label for="password">Mot de passe
-    <input
-    type="password"
-    placeholder="Mot de passe"
-    name="password"
-    id="password"
-    ngModel
-    #passwordInput="ngModel"
-    required
-    value="{{ authData.password }}"
-   >
-  </label>
+  <div *ngIf="authData">
+    <label for="password">Mot de passe
+      <input
+        type="password"
+        placeholder="Mot de passe"
+        name="password"
+        id="password"
+        [(ngModel)]="authData.password"
+        #passwordInput="ngModel"
+        required
+        value="{{ authData.password }}"
+      >
+    </label>
+  </div>
 
-  <label for="firstname">Nom
-    <input
-    type="text"
-    placeholder="Firstname"
-    name="Firstname"
-    id="password"
-    ngModel
-    #passwordInput="ngModel"
-    required
-    value="{{ authData.firstname }}"
-   >
-  </label>
+  <div *ngIf="authData">
+    <label for="firstname">Nom
+      <input
+        type="text"
+        placeholder="Firstname"
+        name="Firstname"
+        id="firstname"
+        [(ngModel)]="authData.firstname"
+        #passwordInput="ngModel"
+        required
+        value="{{ authData.firstname }}"
+        *ngIf="authData"
+      >
+    </label>
+  </div>
 
-  <label for="lastname">Prénom
-    <input
-    type="text"
-    placeholder="Lastname"
-    name="Lastname"
-    ngModel
-    #passwordInput="ngModel"
-    required
-    value="{{ authData.lastname }}"
-    >
-  </label>
+  <div *ngIf="authData">
+    <label for="lastname">Prénom
+      <input
+        type="text"
+        placeholder="Lastname"
+        name="Lastname"
+        id="lastname"
+        [(ngModel)]="authData.lastname"
+        #passwordInput="ngModel"
+        required
+        value="{{ authData.lastname }}"
+      >
+    </label>
+  </div>
+
+  <button type="submit">Modifier mes informations</button>
 </form>
-
