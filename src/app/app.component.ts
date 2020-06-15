@@ -34,7 +34,6 @@ export class AppComponent implements OnInit, OnDestroy {
 
   toggle() {
     this.signup = !this.signup;
-    // CHANGE THE NAME OF THE BUTTON.
     if (this.signup) {
       this.buttonText = 'Déjà inscris ?';
       this.buttonName = 'Connectes toi ici';
