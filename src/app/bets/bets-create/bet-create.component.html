@@ -1,29 +1,43 @@
 <h2>Créer un pari</h2>
 <form (submit)="onSaveBet(betForm)" #betForm="ngForm">
-  <input
-   type="text"
-   name="title"
-   [ngModel]="bet?.title"
-   required
-   placeholder="Titre du pari"
-   #title="ngModel">
-  <textarea
-   rows="10"
-   name="content"
-   [ngModel]="bet?.content"
-   required
-   placeholder="Contenu du pari"
-   #content="ngModel"></textarea>
-  <select
-  name="type"
-  id=""
-  [ngModel]="bet?.type"
-  required
-  #type="ngModel">
-    <option value="" disabled>Type de pari</option>
-    <option value="defi">Défi</option>
-    <option value="promesse">Promesse</option>
-    <option value="objectif">Objectif</option>
-  </select>
-  <button type="submit">Valider mon pari</button>
+  <swiper [config]="config">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <input
+        type="text"
+        name="title"
+        [ngModel]="bet?.title"
+        required
+        placeholder="Titre du pari"
+        #title="ngModel">
+      </div>
+      <div class="swiper-slide">
+        <textarea
+        rows="10"
+        name="content"
+        [ngModel]="bet?.content"
+        required
+        placeholder="Contenu du pari"
+        #content="ngModel">
+        </textarea>
+      </div>
+      <div class="swiper-slide">
+        <select
+        name="type"
+        id=""
+        [ngModel]="bet?.type"
+        required
+        #type="ngModel">
+          <option value="" disabled>Type de pari</option>
+          <option value="defi">Défi</option>
+          <option value="promesse">Promesse</option>
+          <option value="objectif">Objectif</option>
+        </select>
+      </div>
+      <div class="swiper-slide">
+        <button type="submit">Valider mon pari</button>
+      </div>
+    </div>
+    <div class="swiper-pagination"></div>
+  </swiper>
 </form>

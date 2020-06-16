@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { SwiperOptions } from 'swiper';
 
 import { BetsService } from '../bets.service';
 import { Bet } from '../bet.model';
@@ -18,6 +19,17 @@ export class BetCreateComponent implements OnInit {
   bet: Bet;
   private mode = 'create';
   private betId: string;
+
+
+config: SwiperOptions = {
+  slidesPerView: 'auto',
+  allowTouchMove: true,
+  spaceBetween: 20,
+  pagination: {
+    el: '.swiper-pagination',
+    dynamicBullets: true,
+  },
+};
 
   constructor(
     public betsService: BetsService,

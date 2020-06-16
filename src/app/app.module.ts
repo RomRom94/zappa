@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { NgxUsefulSwiperModule } from 'ngx-useful-swiper';
 
 import { AppComponent } from './app.component';
 import { BetCreateComponent } from './bets/bets-create/bet-create.component';
@@ -34,7 +35,8 @@ import { UserComponent } from './auth/user/user.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxUsefulSwiperModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
