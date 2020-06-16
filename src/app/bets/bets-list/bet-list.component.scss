@@ -8,23 +8,22 @@ h2 {
 }
 
 .bet {
-  position: relative;
-  border: solid 1px $pink;
-  border-radius: 10px;
-  margin-bottom: 50px;
-
-  &:after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    transform: translateY(25px);
-    width: 100%;
-    height: 1px;
-    background-color: $grey;
-  }
-
   &__content {
+    position: relative;
+    border: solid 1px $pink;
+    border-radius: 10px;
+    margin-bottom: 50px;
+
+    &:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      transform: translateY(25px);
+      width: 100%;
+      height: 1px;
+      background-color: $grey;
+    }
 
     &__date {
       background-color: $pink;

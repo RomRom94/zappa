@@ -2,14 +2,14 @@
 
 <ul *ngIf="bets.length > 0">
   <li *ngFor="let bet of bets" class="bet">
-    <div class="bet__content">
+    <div class="bet__content" *ngIf="userIsAuthentificated && userId === bet.creator">
       <p class="bet__content__date">Mardi 10 janvier</p>
       <h3 class="bet__content__title">{{ bet.title }}</h3>
       <p class="bet__content__resume">{{ bet.content }}</p>
       <p class="bet__content__resume">{{ bet.type }}</p>
+      <a [routerLink]="['/edit', bet.id]" *ngIf="userIsAuthentificated && userId === bet.creator">Modifier le pari</a>
+      <button (click)="onDelete(bet.id)" *ngIf="userIsAuthentificated && userId === bet.creator">Supprimer le pari</button>
     </div>
-    <a [routerLink]="['/edit', bet.id]" *ngIf="userIsAuthentificated && userId === bet.creator">Modifier le pari</a>
-    <button (click)="onDelete(bet.id)" *ngIf="userIsAuthentificated">Supprimer le pari</button>
   </li>
 </ul>
 

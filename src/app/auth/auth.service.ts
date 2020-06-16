@@ -145,7 +145,7 @@ export class AuthService {
     return {
       token,
       expirationDate: new Date(expirationDate),
-      userId
+      userId: userId
     };
   }
 }
