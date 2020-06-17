@@ -1,40 +1,44 @@
-<h2>Créer un pari</h2>
+<h2 *ngIf="mode === 'create'">Créer<br>un challenge</h2>
+<h2 *ngIf="mode === 'edit'">Modifier<br>le challenge</h2>
 <form (submit)="onSaveBet(betForm)" #betForm="ngForm">
   <swiper [config]="config">
     <div class="swiper-wrapper">
       <div class="swiper-slide">
-        <input
-        type="text"
-        name="title"
-        [ngModel]="bet?.title"
-        required
-        placeholder="Titre du pari"
-        #title="ngModel">
-      </div>
-      <div class="swiper-slide">
-        <textarea
-        rows="10"
-        name="content"
-        [ngModel]="bet?.content"
-        required
-        placeholder="Contenu du pari"
-        #content="ngModel">
-        </textarea>
-      </div>
-      <div class="swiper-slide">
+        <h3>Choisir le type de challenge</h3>
         <select
         name="type"
         id=""
         [ngModel]="bet?.type"
         required
         #type="ngModel">
-          <option value="" disabled>Type de pari</option>
+          <option value="Type de challenge" disabled>Type de challenge</option>
           <option value="defi">Défi</option>
           <option value="objectif">Objectif</option>
         </select>
       </div>
       <div class="swiper-slide">
-        <button type="submit">Valider mon pari</button>
+        <h3>Titre du challenge</h3>
+        <input
+        type="text"
+        name="title"
+        [ngModel]="bet?.title"
+        required
+        placeholder="Titre du challenge"
+        #title="ngModel">
+      </div>
+      <div class="swiper-slide">
+        <h3>Description du challenge</h3>
+        <textarea
+        name="content"
+        [ngModel]="bet?.content"
+        required
+        placeholder="Contenu du challenge"
+        #content="ngModel">
+        </textarea>
+      </div>
+      <div class="swiper-slide">
+        <h3>Valider son challenge</h3>
+        <button type="submit">Valider mon challenge</button>
       </div>
     </div>
     <div class="swiper-pagination"></div>

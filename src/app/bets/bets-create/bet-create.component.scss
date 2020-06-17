@@ -1,0 +1,77 @@
+@import '../../../assets/scss/variables';
+
+h2 {
+  font-size: 26px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+
+h3 {
+  margin-bottom: 20px;
+}
+
+form {
+  background-color: $white;
+  position: relative;
+  border-radius: 10px;
+  margin-bottom: 50px;
+  padding: 20px;
+  box-shadow: (0 7px 30px -10px rgba(150,170,180,0.5));
+
+  select,
+  input {
+    display: block;
+    width: 100%;
+    height: 42px;
+    padding: 0 20px;
+    appearance: none;
+    font-family: "Poppins";
+    font-size: 16px;
+    font-weight: 300;
+    border: solid 1px #D3D3D3;
+    border-radius: 5px;
+  }
+
+  select {
+    background: $white url(../../../assets/images/down-arrow.svg);
+    background-repeat: no-repeat;
+    background-size: 15px;
+    background-position: right 10px center;
+  }
+
+  textarea {
+    resize : both;
+    min-width : 100%;
+    min-height : 100px;
+    max-width : 100%;
+    max-height : 200px;
+    padding: 20px;
+    font-family: "Poppins";
+    font-size: 16px;
+    font-weight: 300;
+    background-color: transparent;
+    border: solid 1px #D3D3D3;
+    border-radius: 5px;
+  }
+
+  button {
+    display: block;
+    width: 100%;
+    height: 42px;
+    font-family: 'Poppins';
+    font-size: 16px;
+    font-weight: 300;
+    color: $white;
+    background-color: $blue;
+    border-top: solid 1px $grey;
+    border-bottom: solid 1px $grey;
+    border-right: solid 1px $grey;
+    border-left: 0;
+    border-radius: 0 5px 5px 0;
+  }
+
+  .swiper-wrapper {
+    padding-bottom: 50px;
+  }
+}

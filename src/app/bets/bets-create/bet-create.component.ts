@@ -9,7 +9,8 @@ import { Bet } from '../bet.model';
 
 @Component({
   selector: 'app-bet-create',
-  templateUrl: './bet-create.component.html'
+  templateUrl: './bet-create.component.html',
+  styleUrls: ['./bet-create.component.scss']
 })
 export class BetCreateComponent implements OnInit {
   title = '';
@@ -17,12 +18,13 @@ export class BetCreateComponent implements OnInit {
   type = '';
   endDate: '';
   bet: Bet;
-  private mode = 'create';
+  mode = 'create';
   private betId: string;
 
 
 config: SwiperOptions = {
   slidesPerView: 'auto',
+  autoHeight: true,
   allowTouchMove: true,
   spaceBetween: 20,
   pagination: {
