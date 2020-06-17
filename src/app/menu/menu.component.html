@@ -5,9 +5,9 @@
   </div>
   <div class="menu__table">
     <div class="menu__table__title">
-      <h2 (click)="toggleBets()">Mes zap'pa</h2>
-      <h2 (click)="toggleFriends()">Mes amis</h2>
-      <h2 (click)="toggleSettings()">Paramètres</h2>
+      <h2 [className]="(bets) ? 'active' : 'inactive'" (click)="toggleBets()">Mes zap'pa</h2>
+      <h2 [className]="(friends) ? 'active' : 'inactive'" (click)="toggleFriends()">Mes amis</h2>
+      <h2 [className]="(settings) ? 'active' : 'inactive'" (click)="toggleSettings()">Paramètres</h2>
     </div>
     <div class="menu__table__content">
       <app-bet-list *ngIf="bets"></app-bet-list>
