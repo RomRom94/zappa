@@ -86,7 +86,8 @@ export class AuthService {
     this.http
       .put('http://localhost:3000/api/user/' + id, authData)
       .subscribe(response => {
-        this.router.navigate(['/']);
+        console.log(response);
+        this.router.navigate(['/menu']);
       });
   }
 

@@ -4,4 +4,5 @@ export interface Bet {
   content: string;
   creator: string;
   type: string;
+  dateEnd: Date;
 }

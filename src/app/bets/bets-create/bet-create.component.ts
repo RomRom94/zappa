@@ -50,6 +50,7 @@ config: SwiperOptions = {
             content: betData.content,
             creator: betData.creator,
             type: betData.type,
+            dateEnd: betData.dateEnd
           };
         });
       } else {
@@ -64,13 +65,14 @@ config: SwiperOptions = {
       return;
     }
     if (this.mode === 'create') {
-      this.betsService.addBet(form.value.title, form.value.content, form.value.type);
+      this.betsService.addBet(form.value.title, form.value.content, form.value.type, form.value.dateEnd);
     } else {
       this.betsService.updateBet(
         this.betId,
         form.value.title,
         form.value.content,
         form.value.type,
+        form.value.dateEnd
         );
     }
     form.resetForm();

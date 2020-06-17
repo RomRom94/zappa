@@ -25,7 +25,8 @@ export class BetsService {
             id: bet._id,
             creator: bet.creator,
             type: bet.type,
-            endDate: bet.endDate
+            endDate: bet.endDate,
+            dateEnd: bet.dateEnd,
           };
         });
       }))
@@ -46,22 +47,26 @@ export class BetsService {
       content: string,
       creator: string,
       type: string,
+      dateEnd: Date
     }>('http://localhost:3000/api/bets/' + id);
   }
 
-  addBet(title: string, content: string, type: string) {
+  addBet(title: string, content: string, type: string, dateEnd: Date) {
     const betData = new FormData();
     betData.append('title', title);
     betData.append('content', content);
     betData.append('type', type);
 
-    this.http.post('http://localhost:3000/api/bets', { title, content, type })
+    this.http.post('http://localhost:3000/api/bets', { title, content, type, dateEnd })
     .toPromise()
-    .then( apiResponse => { console.log(apiResponse); })
+    .then( apiResponse => {
+      console.log(apiResponse);
+      this.router.navigate(['/']);
+    })
     .catch( apiError => { console.log(apiError); });
   }
 
-  updateBet(id: string, title: string, content: string, type: string) {
+  updateBet(id: string, title: string, content: string, type: string, dateEnd: Date) {
     let betData: Bet | FormData;
     betData = {
       id,
@@ -69,10 +74,12 @@ export class BetsService {
       content,
       creator: null,
       type,
+      dateEnd
     };
     this.http
       .put('http://localhost:3000/api/bets/' + id, betData)
       .subscribe(response => {
+        console.log(response);
         this.router.navigate(['/']);
       });
   }

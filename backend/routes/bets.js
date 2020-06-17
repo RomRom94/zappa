@@ -16,6 +16,7 @@ router.post(
       title: req.body.title,
       content: req.body.content,
       creator: req.userData.userId,
+      dateEnd: req.body.dateEnd,
       type: req.body.type,
     });
     bet.save().then(createdBet => {

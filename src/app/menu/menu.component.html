@@ -1,6 +1,7 @@
 <div class="menu">
   <div class="menu__profile">
     <div class="menu__profile__picture"></div>
+    <!-- <h2 *ngIf="authData">{{ authData.lastname }}</h2> -->
     <a [routerLink]="['/user/', userId]" class="menu__profile__edit"></a>
   </div>
   <div class="menu__table">

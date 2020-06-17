@@ -63,11 +63,32 @@ h2 {
       }
     }
 
-    &__date {
-      border-top-left-radius: 10px;
-      border-top-right-radius: 10px;
-      padding: 10px;
-      font-weight: 300;
+    &-date {
+      display: inline-flex;
+      background-color: #E9E9EA;
+      border-radius: 5px;
+      margin-top: 10px;
+      padding: 5px 10px;
+
+      p {
+        display: flex;
+        align-items: center;
+        position: relative;
+        font-weight: 500;
+        font-size: 13px;
+
+        &::before {
+          content: '';
+          position: relative;
+          margin: -2px 15px 0 0;
+          width: 14px;
+          height: 14px;
+          background: url(../../../assets/images/calendar.svg);
+          background-repeat: no-repeat;
+          background-size: contain;
+          background-position: center center;
+        }
+      }
     }
 
     &__title {

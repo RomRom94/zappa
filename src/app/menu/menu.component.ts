@@ -18,17 +18,20 @@ export class MenuComponent implements OnInit {
   public bets = true;
   public settings = false;
   public friends = false;
-  private authStatusSub: Subscription;
   authData: AuthData;
 
   ngOnInit() {
     this.userId = this.authService.getUserId();
-    this.userIsAuthentificated = this.authService.getIsAuth();
-    this.authStatusSub = this.authService
-    .getAuthStatusListener()
-    .subscribe(isAuthentificated => {
-      this.userIsAuthentificated = isAuthentificated;
-      this.userId = this.authService.getUserId();
+    this.authService.getUser(this.userId).subscribe(async (response: any) => {
+      this.authData = await response;
+      if (response) {
+        this.authData = {
+          email: response.email,
+          password: response.password,
+          firstname: response.firstname,
+          lastname: response.lastname
+        };
+      }
     });
   }
 

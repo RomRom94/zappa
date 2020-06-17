@@ -71,10 +71,12 @@ router.put(
   (req, res, next) => {
     const user = new User({
       email: req.body.email,
+      firstname: req.body.firstname,
+      lastname: req.body.lastname,
       password: req.body.password,
     });
     if(mongoose.Types.ObjectId.isValid(req.params.id)) {
-    User.findByIdAndUpdate(req.params.id,{$set:{email:user.email}},{new:true, useFindAndModify: false}).then((docs)=>{
+    User.findByIdAndUpdate(req.params.id,{$set:{email:user.email, firstname:user.firstname, lastname: user.lastname, password: user.password}},{new:true, useFindAndModify: false}).then((docs)=>{
       if(docs) {
         console.log('data modifiées')
       } else {

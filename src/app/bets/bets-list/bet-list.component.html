@@ -1,4 +1,4 @@
-<h2>Zap'pa<br>de la semaine</h2>
+<h2>Ma liste<br>de Zap'pa</h2>
 
 <ul *ngIf="bets.length > 0">
   <li *ngFor="let bet of bets" class="bet">
@@ -14,6 +14,9 @@
           <h3>{{ bet.title }}</h3>
           <p class="type">{{ bet.type }}</p>
         </div>
+      </div>
+      <div class="bet__content-date">
+        <p>{{ bet.dateEnd | date : "dd.MM.y" }}</p>
       </div>
       <p class="bet__content__resume">{{ bet.content }}</p>
       <div class="bet__content__buttons">

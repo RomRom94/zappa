@@ -15,6 +15,7 @@
           <option value="defi">Défi</option>
           <option value="objectif">Objectif</option>
         </select>
+        <p *ngIf="type.invalid" class="invalid">Champ obligatoire<sup>&#8270;</sup></p>
       </div>
       <div class="swiper-slide">
         <h3>Titre du challenge</h3>
@@ -25,6 +26,7 @@
         required
         placeholder="Titre du challenge"
         #title="ngModel">
+        <p *ngIf="title.invalid" class="invalid">Champ obligatoire<sup>&#8270;</sup></p>
       </div>
       <div class="swiper-slide">
         <h3>Description du challenge</h3>
@@ -34,7 +36,17 @@
         required
         placeholder="Contenu du challenge"
         #content="ngModel">
-        </textarea>
+        </textarea><p *ngIf="content.invalid" class="invalid">Champ obligatoire<sup>&#8270;</sup></p>
+      </div>
+      <div class="swiper-slide">
+        <h3>Date limite du challenge</h3>
+        <input
+        type="date"
+        name="dateEnd"
+        [ngModel]="bet?.dateEnd"
+        required
+        placeholder="Contenu du challenge"
+        #content="ngModel">
       </div>
       <div class="swiper-slide">
         <h3>Valider son challenge</h3>
