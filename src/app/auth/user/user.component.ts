@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthData } from '../auth-data.model';
 import { AuthService } from '../auth.service';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 
 
@@ -12,7 +12,7 @@ import { NgForm } from '@angular/forms';
 })
 
 export class UserComponent implements OnInit {
-  constructor(public authService: AuthService, public route: ActivatedRoute) {}
+  constructor(public authService: AuthService, public route: ActivatedRoute, public router: Router) {}
   authData: AuthData;
   private userId: string;
 
@@ -38,5 +38,6 @@ export class UserComponent implements OnInit {
       return;
     }
     this.authService.update(this.userId, form.value.email, form.value.password, form.value.firstname, form.value.lastname);
+    this.router.navigate(['/']);
   }
 }
