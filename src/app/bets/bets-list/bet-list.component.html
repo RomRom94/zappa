@@ -27,4 +27,5 @@
 
 <a routerLink="/create" class="add-bet"></a>
 
-<p *ngIf="bets.length <= 0">No bets render yet</p>
+<p *ngIf="bets.length <= 0">Aucun challenge en cours ?</p>
+<button *ngIf="bets.length <= 0" routerLink="/create" class="create-challenge">Je crée mon challenge</button>
