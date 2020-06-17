@@ -44,7 +44,7 @@ export class BetListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    // this.betsSub.unsubscribe();
-    // this.authStatusSub.unsubscribe();
+    this.betsSub.unsubscribe();
+    this.authStatusSub.unsubscribe();
   }
 }

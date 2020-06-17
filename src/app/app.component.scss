@@ -2,7 +2,8 @@
 @import '../assets/scss/variables';
 
 h1{
-  font-family: 'Parisienne', cursive;
+  font-family: 'Poppins';
+  font-weight: 300;
   font-size: 42px;
   text-align: center;
 }
@@ -12,7 +13,6 @@ h1{
   display: flex;
   align-items: center;
   height: 100vh;
-  background-color: $pink;
 
   &__container{
     margin: 0 auto;

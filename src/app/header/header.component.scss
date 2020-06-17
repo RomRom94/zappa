@@ -1,7 +1,7 @@
 @import '../../assets/scss/variables';
 
 .header {
-  background-color: $pink;
+  background-color: $white;
   height: 60px;
   padding: 0 20px;
 
@@ -22,7 +22,7 @@
     }
 
     &__title {
-      font-family: 'Parisienne', cursive;
+      font-family: 'Poppins';
       font-size: 24px;
       text-align: center;
     }

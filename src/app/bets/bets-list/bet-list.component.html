@@ -1,14 +1,26 @@
-<h2>Zap'pa de la semaine</h2>
+<h2>Zap'pa<br>de la semaine</h2>
 
 <ul *ngIf="bets.length > 0">
   <li *ngFor="let bet of bets" class="bet">
     <div class="bet__content" *ngIf="userIsAuthentificated && userId === bet.creator">
-      <p class="bet__content__date">Mardi 10 janvier</p>
-      <h3 class="bet__content__title">{{ bet.title }}</h3>
+      <div class="bet__content-intro">
+        <div class="bet__content-intro__type defi" *ngIf="bet.type === 'defi'">
+          <p *ngIf="bet.type === 'defi'">D</p>
+        </div>
+        <div class="bet__content-intro__type objectif" *ngIf="bet.type === 'objectif'">
+          <p *ngIf="bet.type === 'objectif'">O</p>
+        </div>
+        <div class="bet__content-intro__text">
+          <h3>{{ bet.title }}</h3>
+          <p class="type">{{ bet.type }}</p>
+        </div>
+      </div>
       <p class="bet__content__resume">{{ bet.content }}</p>
-      <p class="bet__content__resume">{{ bet.type }}</p>
-      <a [routerLink]="['/edit', bet.id]" *ngIf="userIsAuthentificated && userId === bet.creator">Modifier le pari</a>
-      <button (click)="onDelete(bet.id)" *ngIf="userIsAuthentificated && userId === bet.creator">Supprimer le pari</button>
+      <div class="bet__content__buttons">
+        <a class="defi"[routerLink]="['/edit', bet.id]" *ngIf="userIsAuthentificated && userId === bet.creator && bet.type === 'defi'">Modifier</a>
+        <a class="objectif"[routerLink]="['/edit', bet.id]" *ngIf="userIsAuthentificated && userId === bet.creator && bet.type === 'objectif'">Modifier</a>
+        <button (click)="onDelete(bet.id)" *ngIf="userIsAuthentificated && userId === bet.creator ">Supprimer</button>
+      </div>
     </div>
   </li>
 </ul>

@@ -1,10 +1,11 @@
+@import '../../../assets/scss/variables';
 form{
   margin: 0 auto 30px auto;
   padding: 20px 10px;
   width: 300px;
   display: flex;
   flex-direction: column;
-  background-color: white;
+  background-color: $white;
 
   & input{
     background-color: transparent;
@@ -12,12 +13,12 @@ form{
     border-bottom: solid 1px #c5c5c5;
     outline: none;
     margin-bottom: 30px;
-    font-family: 'Montserrat';
+    font-family: 'Poppins';
     font-weight: 300;
-    color: #000;
+    color: $black;
 
     &::placeholder{
-      color: #000;
+      color: $black;
     }
   }
 
@@ -26,8 +27,10 @@ form{
     margin: 0 auto;
     width: 200px;
     height: 45px;
+    font-family: 'Poppins';
     border: none;
     border-radius: 25px;
-    background-color: #F6E3E1;
+    background-color: $blue;
+    color: $white;
   }
 }

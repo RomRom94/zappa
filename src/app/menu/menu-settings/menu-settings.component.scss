@@ -64,7 +64,7 @@ ul {
         width: 45px;
         height: 20px;
         border-radius: 20px;
-        background-color: $pink;
+        background-color: $white;
         margin-right: 8px;
         border: none;
         outline: none;
@@ -76,9 +76,8 @@ ul {
           transform: translate(0px, -50%);
           width: 25px;
           height: 25px;
-          background-color: $white;
+          background-color: $blue;
           border-radius: 50%;
-          border: solid 1px $pink;
           transition: .4s ease;
 
           &.on {

@@ -1,18 +1,21 @@
 @import '../../../assets/scss/variables';
 
 h2 {
-  font-size: 18px;
-  font-weight: 400;
-  text-decoration: underline;
+  font-size: 26px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
   margin-bottom: 20px;
 }
 
 .bet {
+
   &__content {
+    background-color: $white;
     position: relative;
-    border: solid 1px $pink;
     border-radius: 10px;
     margin-bottom: 50px;
+    padding: 20px;
+    box-shadow: (0 7px 30px -10px rgba(150,170,180,0.5));
 
     &:after {
       content: '';
@@ -25,8 +28,42 @@ h2 {
       background-color: $grey;
     }
 
+    &-intro {
+      display: flex;
+
+      &__type {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 30px;
+        height: 30px;
+        margin-right: 30px;
+        border-radius: 5px;
+
+        p {
+          color: $white;
+        }
+
+        &.objectif {
+          background-color: $blue;
+        }
+
+        &.defi {
+          background-color: $orange;
+        }
+      }
+
+      &__text {
+
+        .type {
+          font-size: 10px;
+          font-style: italic;
+          text-transform: uppercase;
+        }
+      }
+    }
+
     &__date {
-      background-color: $pink;
       border-top-left-radius: 10px;
       border-top-right-radius: 10px;
       padding: 10px;
@@ -43,6 +80,48 @@ h2 {
       padding: 10px;
       font-weight: 300;
     }
+
+    &__buttons {
+      display: flex;
+      position: relative;
+
+      a {
+        display: block;
+        z-index: 2;
+        width: 50%;
+        height: 42px;
+        line-height: 42px;
+        border-radius: 5px;
+        color: $white;
+        text-align: center;
+
+        &.defi {
+          background-color: $orange;
+        }
+
+        &.objectif {
+          background-color: $blue;
+        }
+      }
+
+      button {
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 55%;
+        height: 42px;
+        font-family: 'Poppins';
+        font-size: 16px;
+        font-weight: 300;
+        background-color: transparent;
+        border-top: solid 1px $grey;
+        border-bottom: solid 1px $grey;
+        border-right: solid 1px $grey;
+        border-left: 0;
+        border-radius: 0 5px 5px 0;
+      }
+    }
   }
 }
 
@@ -55,7 +134,7 @@ h2 {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: $pink url(../../../assets/images/plus.svg);
+  background: $white url(../../../assets/images/plus.svg);
   background-size: 18px;
   background-position: center center;
   background-repeat: no-repeat;
