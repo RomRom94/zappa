@@ -3,8 +3,10 @@ import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
-
+import { environment } from '../../environments/environment';
 import { Bet } from './bet.model';
+
+const BACKEND_URL = environment.apiUrl + '/bets/';
 
 @Injectable({providedIn: 'root'})
 export class BetsService {
@@ -15,7 +17,7 @@ export class BetsService {
 
   getBets() {
     this.http
-      .get<{ message: string, bets: any }>('http://localhost:3000/api/bets')
+      .get<{ message: string, bets: any }>(BACKEND_URL)
       .pipe(
         map(betData => {
         return betData.bets.map(bet => {
@@ -50,7 +52,7 @@ export class BetsService {
       imagePath: string,
       type: string,
       dateEnd: Date
-    }>('http://localhost:3000/api/bets/' + id);
+    }>(BACKEND_URL + id);
   }
 
   addBet(title: string, content: string, type: string, dateEnd: Date, image: File) {
@@ -62,7 +64,7 @@ export class BetsService {
     betData.append('image', image, title);
     betData.append('dateEnd', date);
 
-    this.http.post('http://localhost:3000/api/bets', betData)
+    this.http.post(BACKEND_URL, betData)
     .toPromise()
     .then( apiResponse => {
       console.log(apiResponse);
@@ -94,7 +96,7 @@ export class BetsService {
       };
     }
     this.http
-      .put('http://localhost:3000/api/bets/' + id, betData)
+      .put(BACKEND_URL + id, betData)
       .subscribe(response => {
         console.log(response);
         this.router.navigate(['/']);
@@ -103,7 +105,7 @@ export class BetsService {
 
   deleteBet(betId: string) {
     this.http
-      .delete('http://localhost:3000/api/bets/' + betId)
+      .delete(BACKEND_URL + betId)
       .subscribe(() => {
         const updatedBets = this.bets.filter(bet => bet.id !== betId);
         this.bets = updatedBets;

@@ -9,21 +9,17 @@ const userRoutes = require("./routes/user");
 const app = express();
 
 mongoose
-  .connect('mongodb+srv://RomRom94:gzAjIJKMAMRQbnKf@zappa-cpskz.mongodb.net/zappa?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true })
-  // .connect(
-  //   'mongodb://localhost:27017/zappa', {useUnifiedTopology: true,
-  // useNewUrlParser: true,}
-  // )
+  .connect('mongodb+srv://RomRom94:' + process.env.MONGO_ATLAS_PW + '@zappa-cpskz.mongodb.net/zappa?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
-    console.log('ça marche');
+    console.log('Connected to database!');
   })
   .catch(() => {
-    console.log('ça marche pas')
+    console.log('Connection failed!')
   });
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use("/images", express.static(path.join("backend/images")));
+app.use("/images", express.static(path.join("images")));
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin","*");

@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  apiUrl: 'http://zappaapp-env.eba-jrjkmcpe.us-west-2.elasticbeanstalk.com/api'
 };
