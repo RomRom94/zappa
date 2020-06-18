@@ -18,6 +18,9 @@
       <div class="bet__content-date">
         <p>{{ bet.dateEnd | date : "dd.MM.y" }}</p>
       </div>
+      <div class="bet-image">
+        <img [src]="bet.imagePath" [alt]="bet.title">
+      </div>
       <p class="bet__content__resume">{{ bet.content }}</p>
       <div class="bet__content__buttons">
         <a class="defi"[routerLink]="['/edit', bet.id]" *ngIf="userIsAuthentificated && userId === bet.creator && bet.type === 'defi'">Modifier</a>

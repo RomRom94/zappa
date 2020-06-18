@@ -26,6 +26,7 @@ export class BetsService {
             creator: bet.creator,
             type: bet.type,
             endDate: bet.endDate,
+            imagePath: bet.imagePath,
             dateEnd: bet.dateEnd,
           };
         });
@@ -46,18 +47,22 @@ export class BetsService {
       title: string,
       content: string,
       creator: string,
+      imagePath: string,
       type: string,
       dateEnd: Date
     }>('http://localhost:3000/api/bets/' + id);
   }
 
-  addBet(title: string, content: string, type: string, dateEnd: Date) {
+  addBet(title: string, content: string, type: string, dateEnd: Date, image: File) {
     const betData = new FormData();
+    const date = (new Date(dateEnd)).toUTCString();
     betData.append('title', title);
     betData.append('content', content);
     betData.append('type', type);
+    betData.append('image', image, title);
+    betData.append('dateEnd', date);
 
-    this.http.post('http://localhost:3000/api/bets', { title, content, type, dateEnd })
+    this.http.post('http://localhost:3000/api/bets', betData)
     .toPromise()
     .then( apiResponse => {
       console.log(apiResponse);
@@ -66,16 +71,28 @@ export class BetsService {
     .catch( apiError => { console.log(apiError); });
   }
 
-  updateBet(id: string, title: string, content: string, type: string, dateEnd: Date) {
+  updateBet(id: string, title: string, content: string, type: string, dateEnd: Date, image: File | string) {
     let betData: Bet | FormData;
-    betData = {
-      id,
-      title,
-      content,
-      creator: null,
-      type,
-      dateEnd
-    };
+    if (typeof(image) === 'object') {
+      betData = new FormData();
+      const date = (new Date(dateEnd)).toISOString();
+      betData.append('id', id);
+      betData.append('title', title);
+      betData.append('type', type);
+      betData.append('content', content);
+      betData.append('image', image, title);
+      betData.append('dateEnd', date);
+    } else {
+      betData = {
+        id,
+        title,
+        content,
+        creator: null,
+        type,
+        dateEnd,
+        imagePath: image
+      };
+    }
     this.http
       .put('http://localhost:3000/api/bets/' + id, betData)
       .subscribe(response => {

@@ -1,52 +1,55 @@
 <h2 *ngIf="mode === 'create'">Créer<br>un challenge</h2>
 <h2 *ngIf="mode === 'edit'">Modifier<br>le challenge</h2>
-<form (submit)="onSaveBet(betForm)" #betForm="ngForm">
+<form [formGroup]="form"(submit)="onSaveBet()">
   <swiper [config]="config">
     <div class="swiper-wrapper">
       <div class="swiper-slide">
         <h3>Choisir le type de challenge</h3>
         <select
-        name="type"
-        id=""
-        [ngModel]="bet?.type"
-        required
-        #type="ngModel">
+        formControlName="type"
+        >
           <option value="Type de challenge" disabled>Type de challenge</option>
           <option value="defi">Défi</option>
           <option value="objectif">Objectif</option>
         </select>
-        <p *ngIf="type.invalid" class="invalid">Champ obligatoire<sup>&#8270;</sup></p>
+        <p *ngIf="form.get('type').invalid" class="invalid">Champ obligatoire<sup>&#8270;</sup></p>
       </div>
       <div class="swiper-slide">
         <h3>Titre du challenge</h3>
         <input
         type="text"
-        name="title"
-        [ngModel]="bet?.title"
-        required
+        formControlName="title"
         placeholder="Titre du challenge"
-        #title="ngModel">
-        <p *ngIf="title.invalid" class="invalid">Champ obligatoire<sup>&#8270;</sup></p>
+        >
+        <p *ngIf="form.get('title').invalid" class="invalid">Champ obligatoire<sup>&#8270;</sup></p>
       </div>
       <div class="swiper-slide">
         <h3>Description du challenge</h3>
         <textarea
-        name="content"
-        [ngModel]="bet?.content"
-        required
+        formControlName="content"
         placeholder="Contenu du challenge"
-        #content="ngModel">
-        </textarea><p *ngIf="content.invalid" class="invalid">Champ obligatoire<sup>&#8270;</sup></p>
+        >
+        </textarea><p *ngIf="form.get('content').invalid" class="invalid">Champ obligatoire<sup>&#8270;</sup></p>
       </div>
       <div class="swiper-slide">
         <h3>Date limite du challenge</h3>
         <input
         type="date"
-        name="dateEnd"
-        [ngModel]="bet?.dateEnd"
-        required
+        formControlName="dateEnd"
         placeholder="Contenu du challenge"
-        #content="ngModel">
+        >
+        <p *ngIf="form.get('dateEnd').invalid" class="invalid">Champ obligatoire<sup>&#8270;</sup></p>
+      </div>
+      <div class="swiper-slide">
+        <h3>Ajouter une image au challenge</h3>
+        <div>
+          <button type="button" (click)="filePicker.click()">Choisir une image</button>
+          <input type="file" #filePicker (change)="onImagePicked($event)">
+          <p *ngIf="form.get('image').invalid" class="invalid">Champ obligatoire<sup>&#8270;</sup></p>
+        </div>
+        <div class="image-preview" *ngIf="imagePreview !== '' && imagePreview && form.get('image').valid">
+          <img [src]="imagePreview" [alt]="form.value.title">
+        </div>
       </div>
       <div class="swiper-slide">
         <h3>Valider son challenge</h3>

@@ -17,6 +17,16 @@ h2 {
     padding: 20px;
     box-shadow: (0 7px 30px -10px rgba(150,170,180,0.5));
 
+    .bet-image {
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    .bet-image img {
+      width: 100%;
+      // box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+    }
+
     &:after {
       content: '';
       position: absolute;

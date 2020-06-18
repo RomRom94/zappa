@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { SwiperOptions } from 'swiper';
 
 import { BetsService } from '../bets.service';
 import { Bet } from '../bet.model';
+import { mimeType } from './mime-type.validator';
 
 
 @Component({
@@ -18,13 +19,14 @@ export class BetCreateComponent implements OnInit {
   type = '';
   endDate: '';
   bet: Bet;
+  imagePreview: string;
+  form: FormGroup;
   mode = 'create';
   private betId: string;
 
 
 config: SwiperOptions = {
   slidesPerView: 'auto',
-  autoHeight: true,
   allowTouchMove: true,
   spaceBetween: 20,
   pagination: {
@@ -39,6 +41,18 @@ config: SwiperOptions = {
   ) {}
 
   ngOnInit() {
+    this.form = new FormGroup({
+      title: new FormControl(null, {
+        validators: [Validators.required]
+      }),
+      content: new FormControl(null, { validators: [Validators.required] }),
+      type: new FormControl(null, { validators: [Validators.required] }),
+      dateEnd: new FormControl(null, { validators: [Validators.required] }),
+      image: new FormControl(null, {
+        validators: [Validators.required],
+        asyncValidators: [mimeType]
+      })
+    });
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       if (paramMap.has('betId')) {
         this.mode = 'edit';
@@ -48,10 +62,18 @@ config: SwiperOptions = {
             id: betData._id,
             title: betData.title,
             content: betData.content,
+            imagePath: betData.imagePath,
             creator: betData.creator,
             type: betData.type,
-            dateEnd: betData.dateEnd
+            dateEnd: betData.dateEnd,
           };
+          this.form.setValue({
+            title: this.bet.title,
+            content: this.bet.content,
+            image: this.bet.imagePath,
+            type: this.bet.type,
+            dateEnd: this.bet.dateEnd,
+          });
         });
       } else {
         this.mode = 'create';
@@ -60,21 +82,33 @@ config: SwiperOptions = {
     });
   }
 
-  onSaveBet(form: NgForm) {
-    if (form.invalid) {
+  onImagePicked(event: Event) {
+    const file = (event.target as HTMLInputElement).files[0];
+    this.form.patchValue({ image: file });
+    this.form.get('image').updateValueAndValidity();
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.imagePreview = reader.result as string;
+    };
+    reader.readAsDataURL(file);
+  }
+
+  onSaveBet() {
+    if (this.form.invalid) {
       return;
     }
     if (this.mode === 'create') {
-      this.betsService.addBet(form.value.title, form.value.content, form.value.type, form.value.dateEnd);
+      this.betsService.addBet(this.form.value.title, this.form.value.content, this.form.value.type, this.form.value.dateEnd, this.form.value.image);
     } else {
       this.betsService.updateBet(
         this.betId,
-        form.value.title,
-        form.value.content,
-        form.value.type,
-        form.value.dateEnd
+        this.form.value.title,
+        this.form.value.content,
+        this.form.value.type,
+        this.form.value.dateEnd,
+        this.form.value.image
         );
     }
-    form.resetForm();
+    this.form.reset();
   }
 }

@@ -41,6 +41,18 @@ form {
     background-color: $white;
   }
 
+  input[type="file"] {
+    visibility: hidden;
+  }
+
+  .image-preview {
+    margin: 1rem 0;
+  }
+
+  .image-preview img {
+    width: 100%;
+  }
+
   select {
     background: $white url(../../../assets/images/down-arrow.svg);
     background-repeat: no-repeat;
